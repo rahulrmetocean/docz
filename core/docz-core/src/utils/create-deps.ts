@@ -9,6 +9,7 @@ import { ServerMachineCtx } from '../bundler/machine/context'
 const CORE_DEV_DEPS = ['gatsby-theme-docz']
 const LOCAL_DEV_DEPS = ['gatsby-plugin-compile-es6-packages', 'p-reduce']
 const REQUIRED_DEV_DEPS = [
+  'scheduler',
   'gatsby',
   'gatsby-plugin-typescript',
   'gatsby-plugin-eslint',
@@ -51,7 +52,7 @@ const getCoreDeps = async ({ isDoczRepo }: ServerMachineCtx, pkg: any) => {
 export const createDeps = async (ctx: ServerMachineCtx) => {
   const filepath = path.join(paths.root, 'package.json')
   const pkg = await fs.readJSON(filepath, { throws: false })
-  const dependencies = pkg.dependencies
+  const dependencies = {}
   return {
     dependencies,
     devDependencies: {

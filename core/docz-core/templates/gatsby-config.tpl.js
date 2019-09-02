@@ -14,7 +14,7 @@ const config = {
   },
   plugins: [
     {
-      resolve: 'gatsby-theme-docz',
+      resolve: require.resolve("../node_modules/gatsby-theme-docz"),
       options: <%- opts %>
     },<% if (config.typescript) {%>
     {

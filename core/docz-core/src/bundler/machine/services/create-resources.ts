@@ -25,6 +25,7 @@ const copyAndModifyPkgJson = async (ctx: ServerMachineCtx) => {
   const movePath = path.join(paths.docz, 'package.json')
   const pkg = await fs.readJSON(filepath, { throws: false })
   const deps = await createDeps(ctx)
+  delete pkg['dependencies']
   const newPkg = merge(pkg, {
     ...deps,
     scripts: {
